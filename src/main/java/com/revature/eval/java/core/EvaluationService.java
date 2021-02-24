@@ -31,9 +31,22 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String newphrase = "";
+		newphrase += phrase.charAt(0);
+		for(int i = 1; i < phrase.length(); i++) {
+			
+			if(Character.isWhitespace(phrase.charAt(i))) {
+				
+				newphrase += phrase.charAt(i+1);
+			}
+			
+		}
+				
+		return newphrase.toUpperCase();
 	}
-
+//String str = " hello World 18 times ";
+//String result = str.replaceAll("\\B.|\\P{L}", "").toUpperCase();
+//HWT
 	/**
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
 	 * equilateral triangle has all three sides the same length. An isosceles
@@ -85,16 +98,25 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
+			if (sideOne == sideTwo && sideTwo == sideThree) {
+				return true;
+			}
 			return false;
 		}
 
 		public boolean isIsosceles() {
 			// TODO Write an implementation for this method declaration
+			if (sideOne == sideTwo || sideTwo == sideThree || sideOne == sideThree) {
+				return true;
+			}
 			return false;
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
+			if(sideOne != sideTwo && sideTwo != sideThree && sideOne != sideThree) {
+				return true;
+			}
 			return false;
 		}
 
@@ -117,7 +139,81 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		int score = 0;
+		
+		for(int i=0; i<string.length();i++) {
+			char letter = string.charAt(i);
+			switch(letter) {
+					case 'a':
+					case 'A':
+					case 'e':
+					case 'E':
+					case 'i':
+					case 'I':
+					case 'o':
+					case 'O':
+					case 'u':
+					case 'U':
+					case 'l':
+					case 'L':
+					case 'n':
+					case 'N':
+					case 'r':
+					case 'R':
+					case 's':
+					case 'S':
+					case 't':
+					case 'T':
+							score +=1;
+							break;
+					case 'd':
+					case 'D':
+					case 'g':
+					case 'G':
+							score +=2;
+							break;
+					case 'b':
+					case 'B':
+					case 'c':
+					case 'C':
+					case 'm':
+					case 'M':
+					case 'p':
+					case 'P':
+							score +=3;
+							break;
+					case 'f':
+					case 'F':
+					case 'h':
+					case 'H':
+					case 'v':
+					case 'V':
+					case 'w':
+					case 'W':
+					case 'y':
+					case 'Y':
+							score +=4;
+							break;
+					case 'k':
+					case 'K':
+							score +=5;
+							break;
+					case 'j':
+					case 'J':
+					case 'x':
+					case 'X':
+							score +=8;
+							break;
+					case 'q':
+					case 'Q':
+					case 'z':
+					case 'Z':
+							score +=10;
+							break;
+				
+			}
+		}
+		return score;
 	}
 
 	/**
@@ -153,7 +249,15 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String number ='';
+		for(int i=0; i<string.length(); i++) {
+			char digit = string.charAt(i);
+			if(digit =='-'|| digit ==' '|| digit =='('|| digit ==')'|| digit =='.') {
+				continue;
+			}
+			number = number + string.charAt(i);
+		}
+		return number;
 	}
 
 	/**
